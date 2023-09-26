@@ -1,21 +1,31 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import ItemCard from './components/ItemCard'
 import "./App.css"
 
-import jeans from '../src/assets/jeans.jpg'
-import tshirt from '../src/assets/t-shirt.jpg'
-import sweater from '../src/assets/sweater.jpg'
-
 const App = () => {
+
+  const [cards, setCards] = useState(null)
+
+  useEffect(()=>{
+
+    fetch("http://127.0.0.1:8000/api/")
+    .then(res => res.json())
+    .then(data => {
+      let li = []
+      data.forEach(item => {
+        li.push(<ItemCard key={item.id} itemName={item.name} price={item.price} discount={item.discount} />)
+      })
+      setCards(li)
+
+    })
+
+  },[])
+
   return (
     <div>
       <h1>StyleZen</h1>
       <div className='cardHolder'>
-        <ItemCard itemName="Pulóver" price={8000} discount={0.5} picture={sweater} />
-        <ItemCard itemName="Farmer" price={10000} picture={jeans} />
-        <ItemCard itemName="Nirvana póló" price={53000} discount={0.2} picture={tshirt}/>
-
-        <ItemCard itemName="Májki cipő" price={8000} discount={0.4} />
+        {cards}
       </div>
     </div>
   )
