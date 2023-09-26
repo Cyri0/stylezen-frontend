@@ -1,0 +1,51 @@
+.card{
+    /* border: 1px solid black; */
+    box-sizing: border-box;
+    width: 200px;
+}
+
+.card .cardPic{
+    height: 200px;
+    width: 100%;
+    background-color: gray;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+.card h3{
+    margin: 0;
+    font-size: 1rem;
+    padding-bottom: 5px;
+}
+
+.card .cardInfo{
+    padding: 10px 0px;
+}
+
+.card .price{}
+
+.card .oldPrice{
+    margin-left: 5px;
+    text-decoration: line-through;
+}
+
+.card .discountTag{
+    position: absolute;
+    right: -30px;
+    top: 8px;
+    padding: 10px 40px;
+    transform: rotate(45deg);
+    font-weight: bold;
+}
+
+.card .high{
+    background-color: black;
+    color: white;
+}
+
+.card .low{
+    background-color: skyblue;
+    color: white;
+}
